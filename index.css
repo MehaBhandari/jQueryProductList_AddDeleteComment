@@ -1,4 +1,7 @@
-.container .content {
-    display: none;
-    padding : 5px;
+.productStyle {
+    margin-top: 15px;
+}
+.mark { 
+    background-color: yellow;
+    color: black;
 }

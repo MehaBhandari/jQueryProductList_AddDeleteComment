@@ -73,34 +73,72 @@ var productList = [{
     barcode: "0011_blue",
     price: '500'
 }];
+
+
 function displayProduct(productList) {
     $.each(productList, function( index, value ) {
-        $("#productData").append(
-            `<div class='col-4 productStyle'> 
-                <div class='card'> 
-                    <img class='card-img-top' src="${value.productImg}" style='width:20%; height: 100px' /> <br/> 
-                    <div class='card-body'> 
-                        <h5 class='card-title'> Product: ${value.productName}</h5> 
-                        <p class='card-text'>Barcode: ${value.barcode}</p> 
-                        <p class='card-text'> Price: Rs ${value.price}</p> 
-                        <input type="button" class='btn btn-primary deleteBtn' value="Delete" /> 
-                    </div> 
-                </div> 
-            </div>`);
+        var imgDiv = $("<img></img>").addClass("card-img-top").attr( "src", value.productImg )
+            .height("150px").width("20%");
+        var h5cardTitle = $("<h5/>").addClass("card-title").text(value.productName);
+        var pCardText1 = $("<p/>").addClass("card-text").text(value.barcode);
+        var pCardText2 = $("<p/>").addClass("card-text").text(value.price);
+        var inputDel = $("<input/>").attr("type", "button").addClass("btn btn-primary deleteBtn").val("Delete")
+        var cardBodyDiv = $("<div/>").addClass("card-body")
+                        .append(h5cardTitle)
+                        .append(pCardText1)
+                        .append(pCardText2)
+                        .append(inputDel);
+        
+        var cardDiv = $("<div/>").addClass("card").append(imgDiv)
+                        .append(cardBodyDiv);
+        var cardBody = $("<div/>").addClass("col-4 productStyle")
+                        .append(cardDiv)
+                    
+
+        $("#productData").append(cardBody);
     });
+
+    // $.each(productList, function( index, value ) {
+    //     $("#productData").append(
+    //         `<div class='col-4 productStyle'> 
+    //             <div class='card'> 
+    //                 <img class='card-img-top' src="${value.productImg}" style='width:20%; height: 100px' /> <br/> 
+    //                 <div class='card-body'> 
+    //                     <h5 class='card-title'> Product: ${value.productName}</h5> 
+    //                     <p class='card-text'>Barcode: ${value.barcode}</p> 
+    //                     <p class='card-text'> Price: Rs ${value.price}</p> 
+    //                     <input type="button" class='btn btn-primary deleteBtn' value="Delete" /> 
+    //                 </div> 
+    //             </div> 
+    //         </div>`);
+    // });
 }
 function displayComments(commentList) {
-    $.each(commentList, function(index, value){
-        $('#commentList').append(`
-            <div  class='card'>
-                <div class="card-header" >
-                    ${value.name}
-                </div>
-                <div class='card-body'> <mark data-toggle="tooltip" title="Rating">${value.rating}</mark>  ${value.comment}</div>
-            </div> <br/>`)
-    })
+    $.each(commentList, function(index, value){       
+        var cardHeaderDiv = $("<div/>").addClass("card-header").text(value.name);
+        var commentBodyDiv = $("<div/>").text(value.comment)
+        var ratingDataAttr = $("<mark/>").attr("data-toggle", "tooltip").attr("title","Rating is "+value.rating).text(value.rating).append(commentBodyDiv);
+        var lineBrk = $("<br/>");
+        var outerCardDiv = $("<div/>").addClass("card").append(cardHeaderDiv).append(ratingDataAttr);
+        $('#commentList').append(outerCardDiv).append(lineBrk);
+    });
+
+    // $.each(commentList, function(index, value){
+    //     $('#commentList').append(`
+    //         <div  class='card'>
+    //             <div class="card-header" >
+    //                 ${value.name}
+    //             </div>
+    //             <div class='card-body'> <mark data-toggle="tooltip" title="Rating">${value.rating}</mark>  ${value.comment}</div>
+    //         </div> <br/>`)
+    // });
 }
 $(document).ready(function(){
+
+    // $.ajax({url: "demo_test.txt", success: function(result){
+    //     $("#div1").html(result);
+    //   }});
+
     displayProduct(productList);
     displayComments(commentList);
     $(".deleteBtn").click(function() {

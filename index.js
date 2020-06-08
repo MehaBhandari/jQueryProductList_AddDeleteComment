@@ -1,5 +1,6 @@
 var newProduct ={};
 var newComment = {};
+
 var commentList = [{
     name: 'Mehak Verma',
     comment: 'Good quality and cheap price',
@@ -78,11 +79,16 @@ var productList = [{
 function displayProduct(productList) {
     $.each(productList, function( index, value ) {
         var imgDiv = $("<img></img>").addClass("card-img-top").attr( "src", value.productImg )
-            .height("150px").width("20%");
-        var h5cardTitle = $("<h5/>").addClass("card-title").text(value.productName);
-        var pCardText1 = $("<p/>").addClass("card-text").text(value.barcode);
-        var pCardText2 = $("<p/>").addClass("card-text").text(value.price);
-        var inputDel = $("<input/>").attr("type", "button").addClass("btn btn-primary deleteBtn").val("Delete")
+            .height("150px").width("60%").css("margin", "auto");
+        
+        var h5cardTitle = $("<h5/>").addClass("card-title").text("Product Name: " + value.productName);
+        
+        var pCardText1 = $("<p/>").addClass("card-text").text("Product Barcode: " + value.barcode);
+        
+        var pCardText2 = $("<p/>").addClass("card-text").text("Produst Cost: " + value.price);
+        
+        var inputDel = $("<input/>").attr("type", "button").addClass("btn btn-primary deleteBtn").val("Delete").css("width", "100%")
+        
         var cardBodyDiv = $("<div/>").addClass("card-body")
                         .append(h5cardTitle)
                         .append(pCardText1)
@@ -91,11 +97,12 @@ function displayProduct(productList) {
         
         var cardDiv = $("<div/>").addClass("card").append(imgDiv)
                         .append(cardBodyDiv);
-        var cardBody = $("<div/>").addClass("col-4 productStyle")
+        
+        var cardBody = $("<div/>").addClass("col-3   productStyle")
                         .append(cardDiv)
                     
 
-        $("#productData").append(cardBody);
+        $("#productData").append(cardBody).css("margin-bottom", "10px");
     });
 
     // $.each(productList, function( index, value ) {
@@ -117,22 +124,13 @@ function displayComments(commentList) {
     $.each(commentList, function(index, value){       
         var cardHeaderDiv = $("<div/>").addClass("card-header").text(value.name);
         var commentBodyDiv = $("<div/>").text(value.comment)
-        var ratingDataAttr = $("<mark/>").attr("data-toggle", "tooltip").attr("title","Rating is "+value.rating).text(value.rating).append(commentBodyDiv);
+        var ratingDataAttr = $("<mark/>").attr("data-toggle", "tooltip").attr("title","Rating is "+value.rating).text("Customer Rating: " + value.rating).append(commentBodyDiv).css("padding-left", "15px");
         var lineBrk = $("<br/>");
         var outerCardDiv = $("<div/>").addClass("card").append(cardHeaderDiv).append(ratingDataAttr);
         $('#commentList').append(outerCardDiv).append(lineBrk);
     });
-
-    // $.each(commentList, function(index, value){
-    //     $('#commentList').append(`
-    //         <div  class='card'>
-    //             <div class="card-header" >
-    //                 ${value.name}
-    //             </div>
-    //             <div class='card-body'> <mark data-toggle="tooltip" title="Rating">${value.rating}</mark>  ${value.comment}</div>
-    //         </div> <br/>`)
-    // });
 }
+
 $(document).ready(function(){
 
     // $.ajax({url: "demo_test.txt", success: function(result){

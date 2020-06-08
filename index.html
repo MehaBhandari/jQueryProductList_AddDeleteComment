@@ -11,98 +11,101 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-light bg-light"> <span class="navbar-brand mb-2 mx-auto text-primary h1">Welcome to our Product Listing Page</span>
+	<nav class="navbar navbar-light bg-light"> 
+        <span class="navbar-brand mb-2 mx-auto text-primary h1">Welcome to our Product Listing Page</span>
 	</nav>
 	<br>
 	<div id="accordion">
-		<div class="card">
-			<div class="card-header" id="headingOne">
-				<h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        Add a Product
-                    </button>
-                </h5>
-			</div>
-			<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-				<div class="card-body">
-					<form id="myForm" action="" method="post" class="container-fluid">
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <label>Name: </label>
-								<input type="text" name="name" id="productName" required/>
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <label>Price: </label>
-								<input type="text" name="price" id="productPrice" required/>
-							</div>
-							<br/>
-							<br/>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <label>Barcode: </label>
-								<input type="text" name="barcode" id="productBarcode" required/>
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <label>Image Url: </label>
-								<input type="text" name="imageUrl" id="productImageUrl" required/>
-							</div>
-						</div>
-						<br/>
-						<br/>
-						<div style="text-align:center">
-							<input type="button" value="Submit Product" id="submitProduct" style='width: 200px' class="btn btn-success" />
-						</div>
-					</form>
-					<br/>
-				</div>
-			</div>
-		</div>
+
 		<div class="card">
 			<div class="card-header" id="headingTwo">
-				<h5 class="mb-0">
-                        Product List
-                    </h5>
+				<h5 class="mb-0">Product List</h5>
 			</div>
 			<div class="container-fluid">
+                <div class="row">
+                    <div class="col-12" style="padding-top: 10px">
+                        <label style="width: 150px; margin-left: 5px">Filter Products: </label>
+                        <input type="text" />
+                    </div>
+                </div>
 				<div class="row" id="productData"></div>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-header" id="headingThree">
-				<h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Review Comments
-                    </button>
+        </div>
+        
+        <div class="card" style="margin-top: 10px;">
+            <div class="card-header" id="headingOne" style="position: relative">
+                <button class="btn btn-link collapsed"  style="position: relative; left: -15px;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <h5 class="mb-0">
+                        Click to Add Product
                     </h5>
-			</div>
-			<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-				<h6>Add Comment</h6>
-				<form id="myForm" action="" method="post" class="container-fluid">
-					<div class="row">
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                </button>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <form id="myForm" action="" method="post" class="container-fluid">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Name: </label>
+                                <input type="text" name="name" id="productName" required/>
+                            </div>
+                            <div class="col-6">
+                                <label>Price: </label>
+                                <input type="text" name="price" id="productPrice" required/>
+                            </div><br/><br/>
+                            <div class="col-6">
+                                <label>Barcode: </label>
+                                <input type="text" name="barcode" id="productBarcode" required/>
+                            </div>
+                            <div class="col-6">
+                                <label>Image Url: </label>
+                                <input type="text" name="imageUrl" id="productImageUrl" required/>
+                            </div>
+                        </div><br/><br/>
+                        <div>
+                            <input type="button" value="Submit Product" id="submitProduct" style='width: 200px' class="btn btn-success" />
+                        </div>
+                    </form>
+                    <br/>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 10px;">
+            <div class="card-header" id="headingThree">
+                <button  style="position: relative;" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <h5 style="position: relative; left: -15px;">Click to Add Review Comments</h5>
+                </button>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                
+                <div class="container-fluid">
+                    <div class="row col-12">
+                        <h4>Add Comment</h4>
+                    </div>
+                </div>
+                <form id="myForm" action="" method="post" class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
                             <label>Name: </label>
-							<input type="text" name="name" id="name" required/>
-						</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <input type="text" name="name" id="name" required/>
+                        </div>
+                        <div class="col-12">
                             <label>Rating: </label>
-							<input type="text" name="rating" id="rating" required/>
-						</div>
-						<br/>
-						<br/>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <label>Comment: </label>
-							<textarea name="comment" id="comment" rows="3" cols="50"></textarea>
-						</div>
-					</div>
-					<br/>
-					<br/>
-					<div style="text-align:center">
-						<input type="button" value="Submit Comment" id="submitComment" style='width: 200px' class="btn btn-success" />
-					</div>
-				</form>
-				<hr>
-				<div class="card-body" id="commentList"></div>
-			</div>
-		</div>
+                            <input type="number" min="0" max="5" name="rating" id="rating" required/>
+                        </div><br/><br/>
+                        <div class="col-6">
+                            <label style="vertical-align: top">Comment: </label>
+                            <textarea name="comment" id="comment" rows="3" cols="50"></textarea>
+                        </div>
+                    </div><br/><br/>
+                    <div>
+                        <input type="button" value="Submit Comment" id="submitComment" style='width: 200px' class="btn btn-success" />
+                    </div>
+                </form>
+                <hr>
+                <div class="card-body" id="commentList"></div>
+            </div>
+        </div>
 	</div>
 </body>
 

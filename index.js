@@ -56,7 +56,8 @@ function displayComments(commentList) {
     $.each(commentList, function(index, value){       
         var cardHeaderDiv = $("<div/>").addClass("card-header").text(value.name);
         var commentBodyDiv = $("<div/>").text(value.comment)
-        var ratingDataAttr = $("<mark/>").attr("data-toggle", "tooltip").attr("title","Rating is "+value.rating).text("Customer Rating: " + value.rating).append(commentBodyDiv).css("padding-left", "15px");
+        var ratingDataAttr = $("<mark/>").attr("data-toggle", "tooltip").attr("title","Rating is "+value.rating)
+                                .text("Customer Rating: " + value.rating).append(commentBodyDiv).css("padding-left", "15px");
         var lineBrk = $("<br/>");
         var outerCardDiv = $("<div/>").addClass("card").append(cardHeaderDiv).append(ratingDataAttr);
         $('#commentList').append(outerCardDiv).append(lineBrk);
@@ -81,7 +82,7 @@ $(document).ready(function(){
     $('#submitComment').click(submitClickedFunctionality);
 });
 
-// Functionality invoked when the Product Delete button is clicked
+// Functionality invoked for filtering of the Product
 function filterProduct(event) {
     var filteredProduct = productList.filter((product) => {
         return product.productName.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1
@@ -89,6 +90,7 @@ function filterProduct(event) {
     displayProduct(filteredProduct);    
 }
 
+// Functionality invoked when the Product Delete button is clicked
 function deleteProduct(event) {
     productList = productList.filter((product)=>{
         return event.target.dataset.barcode !== product.barcode;
@@ -112,7 +114,7 @@ function submitProductFunctionality() {
     displayProduct(productList);
     refreshProductInputs();
     $('.filterText')[0].value = "";
-    alert("Thank you for adding product!");
+    alert("Thank you for adding the product!");
 }
 
 // Clearing Input Boxes in Product Section
@@ -135,7 +137,7 @@ function submitClickedFunctionality() {
     commentList.push(newComment);
     displayComments(commentList);
     refreshComments();
-    alert("Thank you for adding comment!");
+    alert("Thank you for adding the comment!");
 }
 
 // Clearing Input Boxes in Comment Section
